@@ -1,0 +1,30 @@
+{
+"label":"PORTS",
+"icon":"ic-PS.png",
+"iconsmall":"ic-PS-32-n.png",
+"iconlist":"ic-PS-80-n.png",
+"iconsel":"ic-PS.png",
+"background":"bg.png",
+"themecolor":"00FF00",
+"launch":"launch.sh",
+"rompath":"../../Roms/PORTS",
+"imgpath":"../../Imgs/PORTS",
+"useswap":1,
+"shortname":0,
+"hidebios":1,
+"extlist":"m3u",
+    "launchlist": [
+        {
+            "name": "Create Shortcut to Apps",
+            "launch": "linkToApps.sh"
+        },
+        {
+            "name": "Revoke Shortcut from Apps",
+            "launch": "rmAppsLink.sh"
+        },
+        {
+            "name": "Performance Mode",
+            "launch": "performance.sh"
+        }
+    ]
+}

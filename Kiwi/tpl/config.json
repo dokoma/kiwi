@@ -1,0 +1,24 @@
+{
+"label":"FBNEO",
+"icon":"ic-FBNEO.png",
+"iconsel":"",
+"background":"bg.png",
+"themecolor":"EC7063",
+"launch":"launch.sh",
+"rompath":"../../Roms/FBNEO",
+"imgpath":"../../Imgs/FBNEO",
+"useswap":1,
+"shortname":1,
+"hidebios":1,
+"extlist":"zip",
+    "launchlist": [
+        {
+            "name": "FBNEO Performance Mode",
+            "launch": "launch_performance.sh"
+        },
+        {
+            "name": "FBNEO",
+            "launch": "launch.sh"
+        }
+    ]
+}

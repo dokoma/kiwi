@@ -1,0 +1,54 @@
+DATA_DIR=/mnt/SDCARD/Vault/PORTS
+
+#scan all ports and build each folder a config.json and a default icon for link to Apps.
+
+cd $DATA_DIR
+echo $PWD
+for file in $DATA_DIR/*; do
+    if [ -d "$file" ]; then
+        foldername=${file##*/}
+        #echo foldername=$foldername
+	
+        for launchfile in $file/launch*.sh; do
+            if [ -d "$launchfile" ]; then
+                echo "$launchfile is a dir??"
+            elif [ -f "$launchfile" ]; then
+		#temp for get fname
+                lname=${launchfile/.sh}
+	  echo $foldername/config.json
+		#temp for get LastName,if it is "launch" then user foldername,else use f2 as name
+                fname=${lname##*/}
+                #just one config then first One take the priority
+                if [ "$fname" = "launch" ]; then
+                  #echo $file >$LIST_DIR/$foldername.m3u
+			title=$foldername
+			#if not exists config.json then add one
+			if [ ! -f "$foldername/config.json" ]; then
+			  sed "s/placeholder/$foldername/" /kiwi/tpl/config.json.apps > $foldername/config.json
+			  	echo =====IS_LAUNCH: use foldername : $foldername
+			else 
+	             		echo =====EXISTS a config.json NOW
+			fi
+                else
+	                shfile=${launchfile##*/}
+			title=${fname##*_}
+		  	if [ ! -f "$foldername/config.json" ]; then
+			  sed "s/placeholder/$title/" /kiwi/tpl/config.json.apps > $foldername/config.json
+			  sed -i "s/launch.sh/$shfile/" $foldername/config.json
+			  echo =====IS_LAUNCH_F2: use title=$title shfile=$shfile 
+			else
+	             		echo =====EXISTS a config.json NOW
+			fi
+                fi
+  
+                if [ ! -f "$foldername/$title.png" ]; then 
+			cp /kiwi/icon/ic-default.png $foldername/$title.png
+                        echo default png for $title added.
+			#echo cp /kiwi/icon/ic-default.png $foldername/$title.png
+		fi
+            fi
+          done
+    elif [ -f "$file" ]; then
+        echo "$file exists"
+    fi
+done

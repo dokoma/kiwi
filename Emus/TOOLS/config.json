@@ -1,0 +1,33 @@
+{
+"label":"TOOLS",
+"icon":"ic-PS.png",
+"iconsmall":"ic-PS-80-n.png",
+"iconlist":"ic-PS-32-n.png",
+"background":"bg.png",
+"themecolor":"00FF00",
+"launch":"launch.sh",
+"rompath":"../../Roms/TOOLS",
+"imgpath":"../../Imgs/TOOLS",
+"useswap":0,
+"shortname":0,
+"hidebios":0,
+"extlist":"sh|run",
+    "launchlist": [
+        {
+            "name": "View",
+            "launch": "/kiwi/1/view_cmder.sh"
+        },
+        {
+            "name": "SendToMe",
+            "launch": "/kiwi/1/mail_me.sh"
+        },
+	{
+            "name": "ShareWith",
+            "launch": "/kiwi/1/mail_share.sh"
+        },
+	{
+            "name": "Edit",
+            "launch": "/kiwi/1/edit_cmder.sh"
+        }
+    ]
+}

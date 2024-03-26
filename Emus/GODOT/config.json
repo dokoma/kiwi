@@ -1,0 +1,24 @@
+{
+"label":"GODOT",
+"icon":"ic-GODOT.png",
+"iconsel":"",
+"background":"bg.png",
+"themecolor":"EC7063",
+"launch":"launch.sh",
+"rompath":"../../Roms/GODOT",
+"imgpath":"../../Imgs/GODOT",
+"useswap":1,
+"shortname":1,
+"hidebios":1,
+"extlist":"pck",
+    "launchlist": [
+        {
+            "name": "GODOT Performance Mode",
+            "launch": "launch_performance.sh"
+        },
+        {
+            "name": "GODOT",
+            "launch": "launch.sh"
+        }
+    ]
+}

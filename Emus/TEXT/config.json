@@ -1,0 +1,33 @@
+{
+"label":"TEXT",
+"icon":"st_72x72.png",
+"iconsmall":"st_72x72.png",
+"iconlist":"st_72x72.png",
+"background":"bg.png",
+"themecolor":"0000FF",
+"launch":"launch.sh",
+"rompath":"../../Data/TEXT",
+"imgpath":"../../Data/TEXT",
+"useswap":1,
+"shortname":1,
+"hidebios":0,
+"extlist":"txt",
+ "launchlist": [
+        {
+            "name": "View",
+            "launch": "/kiwi/1/view_cmder.sh"
+        },
+        {
+            "name": "SendToMe",
+            "launch": "/kiwi/1/mail_me.sh"
+        },
+        {
+            "name": "ShareWith",
+            "launch": "/kiwi/1/mail_share.sh"
+        },
+        {
+            "name": "Edit",
+            "launch": "/kiwi/1/edit_cmder.sh"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+"label":"ScreenShots",
+"icon":"st_72x72.png",
+"iconsmall":"st_72x72.png",
+"iconlist":"st_72x72.png",
+"background":"bg.png",
+"themecolor":"0000FF",
+"launch":"launch.sh",
+"rompath":"../../Screenshots",
+"imgpath":"../../Screenshots",
+"useswap":1,
+"shortname":1,
+"hidebios":0,
+"extlist":"ph|png|jpg|phf|sh",
+ "launchlist": [
+        {
+            "name": "Snap On/Off",
+            "launch": "../../Roms/TOOLS/snap_swap.sh"
+        },
+        {
+            "name": "View-Cmder",
+            "launch": "/kiwi/1/view_cmder.sh"
+        },
+        {
+            "name": "Mail To Me",
+            "launch": "/kiwi/1/mail_me_ext2png.sh"
+        },
+        {
+            "name": "Mail to That",
+            "launch": "/kiwi/1/mail_share_ext2png.sh"
+        }
+    ]
+}

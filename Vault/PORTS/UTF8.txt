@@ -1,0 +1,2 @@
+SomeText Displayed
+中文 显示正常。

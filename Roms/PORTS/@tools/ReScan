@@ -1,0 +1,88 @@
+#!/bin/sh
+echo parameters $0 $*
+ROM_DIR=/mnt/SDCARD/Roms
+LIST_DIR=$ROM_DIR/PORTS
+DATA_DIR=/mnt/SDCARD/Vault/PORTS
+
+echo  cd "$LIST_DIR"
+cd "$LIST_DIR"
+
+  #seek each directory for the launch*. sh  
+  #if launch.sh only then generate DIRNAME.m3u  else generate each name an m3u.  put the dir in it.
+  #should remove all first... rm .db and rm.m3u
+  rm -f $LIST_DIR/*_cache*.db
+  rm -f $LIST_DIR/*.m3u
+  for file in $DATA_DIR/*; do
+    if [ -d "$file" ]; then
+        foldername=${file##*/}
+        echo $foldername
+	for launchfile in $file/launch*.sh; do
+	    if [ -d "$launchfile" ]; then
+		echo "$launchfile 是一个目录"		
+	    elif [ -f "$launchfile" ]; then
+                lname=${launchfile/.sh}
+	        #echo $lname
+		fname=${lname##*/}
+		if [ "$fname" = "launch" ]; then
+		  echo $file >$LIST_DIR/$foldername.m3u
+		else
+		  echo $file >$LIST_DIR/${fname##*_}.m3u
+		fi		  
+	    fi
+	  done
+    elif [ -f "$file" ]; then
+        #echo "$file 是一个文件"
+	echo ""
+    fi
+  done  
+
+#scan all ports and build each folder a config.json (if launch*.sh exists) and a default icon for link to Apps.
+cd $DATA_DIR
+echo $PWD
+for file in $DATA_DIR/*; do
+    if [ -d "$file" ]; then
+        foldername=${file##*/}
+        #echo foldername=$foldername
+	
+        for launchfile in $file/launch*.sh; do
+            if [ -d "$launchfile" ]; then
+                echo "$launchfile is a dir??"
+            elif [ -f "$launchfile" ]; then
+		#temp for get fname
+                lname=${launchfile/.sh}
+	  echo $foldername/config.json
+		#temp for get LastName,if it is "launch" then user foldername,else use f2 as name
+                fname=${lname##*/}
+                #just one config then first One take the priority
+                if [ "$fname" = "launch" ]; then
+                  #echo $file >$LIST_DIR/$foldername.m3u
+			title=$foldername
+			#if not exists config.json then add one
+			if [ ! -f "$foldername/config.json" ]; then
+			  sed "s/placeholder/$foldername/" /kiwi/tpl/config.json.apps > $foldername/config.json
+			  	echo =====IS_LAUNCH: use foldername : $foldername
+			else 
+	             		echo =====EXISTS a config.json NOW
+			fi
+                else
+	                shfile=${launchfile##*/}
+			title=${fname##*_}
+		  	if [ ! -f "$foldername/config.json" ]; then
+			  sed "s/placeholder/$title/" /kiwi/tpl/config.json.apps > $foldername/config.json
+			  sed -i "s/launch.sh/$shfile/" $foldername/config.json
+			  echo =====IS_LAUNCH_F2: use title=$title shfile=$shfile 
+			else
+	             		echo =====EXISTS a config.json NOW
+			fi
+                fi
+  
+                if [ ! -f "$foldername/$title.png" ]; then 
+			cp /kiwi/icon/ic-default.png $foldername/$title.png
+                        echo default png for $title added.
+		fi
+            fi
+          done
+    elif [ -f "$file" ]; then
+        echo "$file exists"
+    fi
+done

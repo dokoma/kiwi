@@ -1,0 +1,24 @@
+{
+"label":"LOVE",
+"icon":"/kiwi/icon/ic-default.png",
+"iconsel":"",
+"background":"bg.png",
+"themecolor":"EC7063",
+"launch":"launch.sh",
+"rompath":"../../Roms/LOVE",
+"imgpath":"../../Imgs/LOVE",
+"useswap":1,
+"shortname":1,
+"hidebios":1,
+"extlist":"zip|love|exe",
+    "launchlist": [
+        {
+            "name": "LOVE Performance Mode",
+            "launch": "launch_performance.sh"
+        },
+        {
+            "name": "LOVE",
+            "launch": "launch.sh"
+        }
+    ]
+}

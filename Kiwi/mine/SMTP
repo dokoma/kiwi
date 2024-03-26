@@ -1,0 +1,8 @@
+MAIL_FROM='demo@yeah.net'
+MAIL_SMTP='smtps://smtp.yeah.net'
+MAIL_USER=$MAIL_FROM
+MAIL_PASSWORD='thepassword'
+
+MAILTO_DEFAULT=sample@qq.com
+MAILTO_HER_QQ=sample@qq.com
+MAILTO_HIS_GMAIL=someone@gmail.com
