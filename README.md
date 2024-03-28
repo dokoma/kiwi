@@ -1,4 +1,4 @@
-# Kiwi Addon Collection for tsp 
+# Kiwi Addon Collection for tsp
 
 ## 卡文件  (/mnt/SDCARD/*)
 
@@ -8,6 +8,8 @@
   | ------------ | ------------------------------------------------------------ |
   | Apps\PICO8_K | sa版, 需放入PICO8官方aarch64位binary才可用. 摘抄适配自 https://github.com/XK9274/pico-8-wrapper-miyoo 只有基本功能 加入了64位wget供联网 |
   | Emus\PICO8_K | 主屏幕入口 同Roms\PICO8\*.p8配合调用SA版                     |
+  | Emus\GODOT | 主屏幕入口 同Roms\GODOT\*.pck 和可选的*.runtime *.png *.gptk 配合使用                     |
+  | Emus\LOVE | 主屏幕入口 同Roms\LOVE\{,0.10.2\,0.9.2}*.zip *.love *.exe   默认目录下的使用11.5来运行, 配合可选的*.gptk 运行                  |
 
 - 截图及查看:	
 
@@ -80,7 +82,7 @@
   | /mnt/SDCARD/ | 系统内      |                                  |
   | ------------ | ----------- | -------------------------------- |
   | Kiwi         | /kiwi       | adb时和调用时更统一便捷 全在后端 |
-  | Valut        | /roms/ports | 为portmaster铺路                 |
+  | Vault        | /roms/ports | 为portmaster铺路                 |
 
 - /kiwi目录说明 
   - [ ] /0 吃参数的公用ContextMenu
@@ -100,3 +102,4 @@
   - [ ] /filebrowser	文件web访问, 服务 80端口 从tools里启动和关闭
 
 - 部分源码/约定/命名和灵感 参考来源于Tomato/MinUI/Onion,还有Jelos/ArkOS和右手的改版. 部分二进制文件来源于EmuElec等各处散落的东西
+- Special Thanks to Matfy:  the elegant design, creative ideas, passionate info collecting, and various testing
