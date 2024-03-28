@@ -20,8 +20,8 @@ elif [ "$subname" == "0.9.2" ]; then
   echo subname=$subname PWD=$PWD
 fi
 
-# Each a gptk if exists or use specified one
-gptk=" -c $EMU_DIR/love.gptk"
+# Each a gptk if exists or use specified one, not good idea
+#gptk=" -c $EMU_DIR/love.gptk"
 if [ -f ${title}.gptk ]; then 
    gptk=" -c ./${title}.gptk"
 fi
