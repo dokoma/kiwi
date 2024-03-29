@@ -22,18 +22,23 @@ PATH=/kiwi/bin:$PATH
   else 
 	  pa=$(cat $1)
 	  cd $pa
-	  echo PWD is : $PWD
-          result=0
-	  if [ -f "guide.png" ]; then
-            show.elf guide.png 1
-            result=$?
+          result=-1
+	  if [ -f "$GN-guide.png" ] ; then 
+		intro="$GN-guide.png"
+	  elif  [ -f "guide.png" ] ; then 
+		intro="./guide.png"
 	  fi
-          echo $result
-         
+
+	  echo ==${intro}=========== PWD is : $PWD ============================
+          echo show.elf ${intro} 
 	  if [ -f "launch_$GN.sh" ]; then
-	    ./launch_$GN.sh 
+             show.elf ${intro} 
+             ./launch_$GN.sh 
 	  elif [ -f "launch.sh" ]; then
-	    ./launch.sh 
-	  fi
+             show.elf ${intro} 
+             ./launch.sh 
+          fi
+          result=$?
+          echo result=$result
   fi
 
