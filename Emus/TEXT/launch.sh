@@ -16,7 +16,7 @@ PNAME=$(basename "${FOLDER}")
 echo PNAME=$PNAME
 echo FOLDER=$FOLDER
 
-GAMEDIR=/mnt/SDCARD/Kiwi
+GAMEDIR=/kiwi
 export LD_LIBRARY_PATH="$GAMEDIR/libs:$progdir/libs:/usr/trimui/lib"
 
 # do not use fall back , less english chars. mycode not merge the default font
@@ -30,4 +30,4 @@ export LD_LIBRARY_PATH="$GAMEDIR/libs:$progdir/libs:/usr/trimui/lib"
 # $GAMEDIR/cmder/text_viewer.bin -u 1 -j 1 -f 16 -n $GAMEDIR/fonts/msyh.ttf $1
 cd  $GAMEDIR/cmder/
 
-./DinguxCommander1 $1
+./DinguxCommander --loadfile $1

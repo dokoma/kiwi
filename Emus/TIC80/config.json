@@ -1,0 +1,25 @@
+{
+"label":"TIC80",
+"icon":"tic80.png",
+"iconsmall":"tic80.png",
+"iconlist":"tic80.png",
+"background":"bg.png",
+"themecolor":"0000FF",
+"launch":"launch_ra.sh",
+"rompath":"../../Roms/TIC80",
+"imgpath":"../../Imgs/TIC80",
+"useswap":1,
+"shortname":1,
+"hidebios":0,
+"extlist":"tic",
+ "launchlist": [
+        {
+            "name": "SA",
+            "launch": "launch.sh"
+        },
+        {
+            "name": "Libretro",
+            "launch": "launch_ra.sh"
+        } 
+  ]
+}

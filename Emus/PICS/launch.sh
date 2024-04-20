@@ -8,6 +8,10 @@ progdir=`dirname "$0"`
 #then the selected file  remove the last .phf as second param
 #$progdir/showpic.elf "$picdir" "$1"
 
+export LD_LIBRARY_PATH=$progdir/libs:$/usr/trimui/lib
+$progdir/show1.elf "$1"
+exit 0
+
 toolsname=@tools
 echo "$1"
 FOLDER=${1%/*}
@@ -16,7 +20,8 @@ PNAME=$(basename "${FOLDER}")
 echo PNAME=$PNAME
 echo FOLDER=$FOLDER
 
-export LD_LIBRARY_PATH=$progdir/libs:$/usr/trimui/lib
+
+# no need since 1.0.4
 #LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
   if [ "${PNAME}" = "${toolsname}" ]; then
      cd $FOLDER 

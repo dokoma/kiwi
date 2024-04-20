@@ -11,5 +11,5 @@
 "useswap":1,
 "shortname":1,
 "hidebios":0,
-"extlist":"sh|png|jpg|gif|bmp|ph@png|ph@jpg"
+"extlist":"png|jpg|gif|bmp"
 }

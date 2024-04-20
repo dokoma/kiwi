@@ -11,7 +11,7 @@
 "useswap":0,
 "shortname":0,
 "hidebios":0,
-"extlist":"sh|run",
+"extlist":"sh|run|elf",
     "launchlist": [
         {
             "name": "View",

@@ -1,7 +1,7 @@
 #!/bin/sh
 echo come here parameters $0 $*
 echo ------------------------------------------------------------------------
-PORT_DIR=/mnt/SDCARD/Roms/PORTS/Data
+#PORT_DIR=/mnt/SDCARD/Roms/PORTS/Data
 ROM_DIR=/mnt/SDCARD/Roms
 
 toolsname=@tools
@@ -24,21 +24,34 @@ PATH=/kiwi/bin:$PATH
 	  cd $pa
           result=-1
 	  if [ -f "$GN-guide.png" ] ; then 
-		intro="$GN-guide.png"
+		intro="show.elf $GN-guide.png"
 	  elif  [ -f "guide.png" ] ; then 
-		intro="./guide.png"
+		intro="show.elf ./guide.png"
+	  elif  [ -f "loading.png" ] ; then 
+		#auto close when game start graphics
+		intro="pic2fb ./loading.png"
+		#need press O key when png specified, and a little bit slow
+		#intro="show.elf ./loading.png"
+	  elif  [ -f "screenshot.jpg" ] ; then 
+		intro="pic2fb ./screenshot.jpg"
+          else 
+                intro="pic2fb /kiwi/icon/loading.png"
+                #do not support gif, and pic2fb support but do not animate
+                #intro="show.elf /kiwi/icon/loader1.gif"
+		#intro="show.elf"
 	  fi
 
 	  echo ==${intro}=========== PWD is : $PWD ============================
-          echo show.elf ${intro} 
+
 	  if [ -f "launch_$GN.sh" ]; then
-             show.elf ${intro} 
+              ${intro} 
              ./launch_$GN.sh 
 	  elif [ -f "launch.sh" ]; then
-             show.elf ${intro} 
+              ${intro} 
              ./launch.sh 
           fi
           result=$?
           echo result=$result
   fi
+
 

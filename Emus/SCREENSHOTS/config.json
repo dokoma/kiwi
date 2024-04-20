@@ -11,7 +11,7 @@
 "useswap":1,
 "shortname":1,
 "hidebios":0,
-"extlist":"ph|png|jpg|phf|sh",
+"extlist":"png",
  "launchlist": [
         {
             "name": "Snap On/Off",
@@ -23,11 +23,11 @@
         },
         {
             "name": "Mail To Me",
-            "launch": "/kiwi/1/mail_me_ext2png.sh"
+            "launch": "/kiwi/1/mail_me.sh"
         },
         {
             "name": "Mail to That",
-            "launch": "/kiwi/1/mail_share_ext2png.sh"
+            "launch": "/kiwi/1/mail_share.sh"
         }
     ]
 }

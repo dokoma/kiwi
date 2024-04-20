@@ -23,17 +23,22 @@ echo FOLDER=$FOLDER
 
 export LD_LIBRARY_PATH=$progdir/libs:/kiwi/libs:/kiwi/cmder/libs:/usr/trimui/lib:$LD_LIBRARY_PATH
 echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH
-echo P1=${1##*/}
+#echo P1=${1##*/}
 
 #echo [ "${1##*/}" = "SHOW.pf" ]
 #LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+
+#this need to make it better ... to be as default
+find -name "*.png" -print0 | xargs -0 $progdir/show.elf $picdir
+exit 0
+# no need any more from 1.0.4
   if [ "${PNAME}" = "${toolsname}" ]; then
      cd $FOLDER
      "$1"
   elif [ "${1##*/}" = "0000_SHOW.ph" ]; then
-    echo 123456
-    find -name "*.png" -print0 | xargs -0 $progdir/show.elf $picdir
+	find -name "*.png" -print0 | xargs -0 $progdir/show.elf $picdir
   else 
+        #This move to the x-menu  and not use cmder as default..
         tmp="${1%.*}"
         echo NOEXT_ADD_DOTPNG=$tmp.png
         #$progdir/show1.elf "$tmp.png"
