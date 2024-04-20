@@ -42,9 +42,8 @@
   |                        | auto-load if available:$GAMENAME-guide.png, guide.png,loading.png ,scrennshot.jpg, /kiwi/icon/loading.png
   |                        | guide need press a to continue。也可用于先转黑屏等待，避免星露谷等长时间加载看上去主界面死机一样 |
   |                        | @tools/ReScan instead of menu-refresh-romlist, when add/remove game，auto-generate config.json(for Apps/Ports) |
-  | Roms\PORTS\            | Ports游戏的虚拟列表 提供扫描Vault中的游戏自动生成列表，避免一大堆乱七八糟 ,|
+  | Roms\PORTS\            | Ports游戏的m3u虚拟列表 提供扫描Vault中的游戏自动生成列表，避免一大堆乱七八糟, create manual.m3u3 will be kept.|
   | Vault\PORTS\           | Ports游戏的真正数据目录 前两者都是为了适应MainUI的游戏列表才做的 |
-  | Vault\{OTHER}           | SCUMMVM/DOS/TEXT/ real data for them, and the correspond ROMDIR for list clean|
   | Vault\PORTS\PortMaster | 基本使用PortMaster的约定,只修改适配到launch脚本约定来适应MainUI和兼容link到Apps/Ports |
 
 - 看图:
@@ -73,7 +72,8 @@
 
   | 目录                 | 说明                                                         |
   | -------------------- | ------------------------------------------------------------ |
-  | System\starts\mac.sh | 开机自动启动脚本 固定本机ip 参见来源 https://github.com/tGecko/TrimUI-Smart-Pro-resources |
+  | System/starts/mac.sh | 开机自动启动脚本 固定本机ip 参见来源 https://github.com/tGecko/TrimUI-Smart-Pro-resources |
+  | Vault/{OTHER}        | SCUMMVM/DOS/TEXT/ real data for them, and the correspond ROMDIR for list clean|
   |                      |                                                              |
 
    
@@ -86,6 +86,7 @@
   | ------------ | ----------- | -------------------------------- |
   | Kiwi         | /kiwi       | backend only. with .profile , load when adb,make some convinient scripts/aliases , shell only |
   | Vault/PORTS  | /roms/ports | make path for portmaster                 |
+  
 
 - /kiwi目录说明 
   - [x] /0 吃参数的公用ContextMenu
