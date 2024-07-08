@@ -14,18 +14,17 @@
   | Emus\EASYRPGX |  lr/sa 版本可用 , zip仍是不太灵光 |
   | Emus\RPGMAKER |  for RPGMaker XP/VX/VXAce , refer to readme |
   
-
 - 截图及查看:	
 
-    | 目录                      | 说明                                                         |
-    | ------------------------- | ------------------------------------------------------------ |
-    | Emus\SCREENSHOT           | 看截图主屏幕入口 需要在配合下边的脚本                        |
-    |                           | config.json 扩展功能：查看，将截图发送邮件给自己和指定人。   |
-    | Roms\SCREENSHOT           | default show.elf,左右键选择,START键退出. TODO: 加上标题和索引号显示。 保留左右键设定和退出按键提示。 |
-    |                           | x-menu: cmder_view, ugly but works,左右键选择，a键退出            |
-    | Screenshots               | 截图存放目录 hardcoded                                       |
-    | Kiwi\bin\screenshot       | 截图程序本体 L2+R2截图                                       |
-    | ~~System\starts\snap.sh~~ | ~~截图程序自动启动脚本 试图增加 失败了 主UI启动时候会杀掉进程~~ |
+    | 目录                  | 说明                                                         |
+    | --------------------- | ------------------------------------------------------------ |
+    | Emus\SCREENSHOT       | 看截图主屏幕入口 需要在配合下边的脚本                        |
+    |                       | config.json 扩展功能：查看，将截图发送邮件给自己和指定人。   |
+    | Roms\SCREENSHOT       | default show.elf,左右键选择,START键退出. TODO: 加上标题和索引号显示。 保留左右键设定和退出按键提示。 |
+    |                       | x-menu: cmder_view, ugly but works,左右键选择，a键退出       |
+    | Screenshots           | 截图存放目录 hardcoded                                       |
+    | Kiwi\bin\screenshot   | 截图程序本体 L2+R2截图                                       |
+    | System\starts\snap.sh | 截图程序自动启动脚本                                         |
 
 - 工具脚本:
 
@@ -86,7 +85,6 @@
   | ------------ | ----------- | -------------------------------- |
   | Kiwi         | /kiwi       | backend only. with .profile , load when adb,make some convinient scripts/aliases , shell only |
   | Vault/PORTS  | /roms/ports | make path for portmaster                 |
-  
 
 - /kiwi目录说明 
   - [x] /0 吃参数的公用ContextMenu
@@ -98,12 +96,15 @@
     - [x] show.elf		可加载loader图 提示信息用  也可不加参数直接黑屏用作模拟响应
     - [x] mail-att.sh	发送自己附件
     - [x] mail2attach.sh	发送文件用
-    - [ ] syncthing	服务 22000 UI端口8384 从tools里启动和关闭
+    - [ ] syncthing	服务 22000 UI端口8384 从tools里启动和关闭 [syncthing](https://github.com/syncthing/syncthing)
   - [x] /libs 系统增补库 常规放LD_LIBRARY_PATH中用
   - [x] /logs 邮件发送日志等
   - [x] /mine 用户自定义部分 按约定存放个性化信息 按Sample来定制 如SMTP存放发邮件用户信息, ENV for other user defined varibles or overrides the default.
   - [x] /cmder 被其他脚本调用的cmder 吃参数 --loadfile --loadmode rw(textonly)
-  - [ ] /filebrowser	文件web访问, 服务 80端口 从tools里启动和关闭
+  - [ ] /filebrowser	文件web访问, 服务 80端口 从tools里启动和关闭 取自[filebrowser](https://github.com/filebrowser/filebrowser) 
+
+- 很多东西取自 Portmaster ，kloptops和Cebion非常慷慨，做了很牛的社区，受益良多。
 
 - 部分源码/约定/命名和灵感 参考来源于Tomato/MinUI/Onion,还有Jelos/ArkOS和右手的改版. 部分二进制文件来源于EmuElec等各处散落的东西
+
 - Special Thanks to Matfy:  the elegant design, creative ideas, passionate info collecting, and various testing

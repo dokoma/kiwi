@@ -1,0 +1,46 @@
+#!/bin/sh
+echo parameters $0 $*
+ROM_DIR=/mnt/SDCARD/Roms
+LIST_DIR=$ROM_DIR/RPGMAKER
+DATA_DIR=/mnt/SDCARD/Vault/RPGMAKER
+
+echo cd "$LIST_DIR"
+cd "$LIST_DIR"
+
+PATH=/kiwi/bin:$PATH
+
+show.elf
+
+  #seek each directory for the launch*. sh  
+  #if launch.sh only then generate DIRNAME.m3u  else generate each name an m3u.  put the dir in it.
+  #should remove all first... rm .db and rm.m3u
+  rm -f $LIST_DIR/*_cache*.db
+  rm -f $LIST_DIR/*.m3u
+  for file in $DATA_DIR/*; do
+    if [ -d "$file" ]; then
+        foldername=${file##*/}
+        echo Scanning Folder: $foldername
+	for launchfile in $file/*.rgss*; do
+	    if [ -f "$launchfile" ]; then
+	        echo ==Find Game: $launchfile 
+		echo $file >$LIST_DIR/$foldername.m3u
+	    fi
+	 done
+	for launchfile in $file/*.rvproj; do
+	    if [ -f "$launchfile" ]; then
+	        echo ==Find Game: $launchfile 
+		echo $file >$LIST_DIR/$foldername.m3u
+	    fi
+	 done
+
+	    #if [ -f $file/Data/Scripts.rxdata -o -f $file/Data/Scripts.rvdata2 ]; then
+	    if [ -f $file/Data/Scripts.* ]; then
+	        echo ==Find Game: $launchfile 
+		echo $file >$LIST_DIR/$foldername.m3u
+	    fi
+
+    elif [ -f "$file" ]; then
+        #echo "$file 是一个文件"
+	echo ""
+    fi
+  done  
