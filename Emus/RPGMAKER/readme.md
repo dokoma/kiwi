@@ -1,5 +1,10 @@
-based on mkxp/mkxp-freebird from github. Awesome work by Ancurio.
-RGSS: VX/XP/VXACE works.
+RGSS: some XP/XV/VXACE works.(ruby1.8/1.9)
+
+- mkxp with ruby2.7 binding.
+  compile [mkxp](https://github.com/Ancurio/mkxp)/[mkxp-freebird](https://github.com/Ancurio/mkxp-freebird) from github. Awesome work by Ancurio.
+
+- [mkxp-z](https://github.com/mkxp-z/mkxp-z) with ruby3.1.3 binding. Some Pokemon Essentials work.
+
 
 - EMU DIR	`/mnt/SDCARD/Emus/`
 
@@ -10,13 +15,15 @@ RGSS: VX/XP/VXACE works.
   1. put your game directory, rtp directory here(fixed relative path).  i.e:
      ToTheMoon/...  Game files for To The Moon 
      Standard/...   RTP files for XP  
-     RGSSVXAce/...  RTP files for VX Ace 
+     RPGVX/...   RTP files for XP  
+     RPGVXAce/...  RTP files for VX Ace 
 
   2. edit the `mkxp.conf` in the game directoy if required.
   if rtp files required by some game:
   vim `$SOME_GAME_DIR/mkxp.conf`
   add mod/add this , to find rtp in the correspond dir: 
   RTP=../Standard
+  if mkxp-z: edit properties in mkxp.json as to mkxp.conf.
 
   3. game file may need some mod to run (some game use win32-only features. such as `TRGSSX` and so on,  or some queer grammar error originated from ruby1.8 and ruby2.0)
 

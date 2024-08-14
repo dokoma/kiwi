@@ -1,8 +1,12 @@
 #!/bin/sh
 echo come here parameters $0 $*
 echo ------------------------------------------------------------------------
+
 ROM_DIR=/mnt/SDCARD/Roms
-EMU_DIR=$(dirname $0)
+EMU_DIR=$(cd `dirname $0` && pwd)
+
+bin=${bin:-mkxp.bin.freebird}
+echo bin : $bin EMU_DIR: $EMU_DIR PWD: $PWD
 
 toolsname=@tools
 
@@ -52,41 +56,42 @@ Press anykey to exit"
 	  fi
 	  echo ==${intro}=========== PWD is : $PWD ============================
           ${intro} 
-# Ensure the conf directory exists
-mkdir -p "conf"
+
 # Set the XDG environment variables for config & savefiles
-export XDG_CONFIG_HOME="$CONFDIR"
-#export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+#temporary set? if no export ,it wont work.
 export XDG_DATA_HOME=${pa}
-export LD_LIBRARY_PATH="$EMU_DIR/libs:/roms/ports/to_the_moon/libs:/usr/trimui/lib:/usr/lib"
 
-if [ ! -d preload ]; then
-  echo === no preload cp here
-  cp -r $EMU_DIR/preload .
-fi
 
-if [ ! -f mkxp.conf ]; then
-  echo === no conf cp here
-  cp $EMU_DIR/mkxp.conf .
-fi
+# z2 for dynamic, z for static , libs other
+export LD_LIBRARY_PATH="$EMU_DIR/z:$EMU_DIR/z2:$EMU_DIR/libs:/usr/trimui/lib:/usr/lib"
 
-sed -i 's/frameSkip=true/frameSkip=false/' mkxp.conf
+# no need for mkxp-z in fact.
+[ ! -d preload ] && cp -r $EMU_DIR/preload .
+[ ! -f mkxp.conf ] && cp $EMU_DIR/mkxp.conf .
+[ ! -f conf.gptk ] && cp $EMU_DIR/conf.gptk .
+# for z only
+[ ! -d scripts ] && cp -r $EMU_DIR/scripts .
+[ ! -f mkxp.json ] && cp $EMU_DIR/mkxp.json .
 
 #bin=mkxp-z.aarch64
-bin=mkxp.bin.freebird
-if [ ! -f $bin ]; then
-  echo === no bin cp here
-  cp $EMU_DIR/$bin .
+#bin=mkxp-z.static.tsp
+#bin=mkxp.bin.freebird
+#[ ! -f $bin ] && cp $EMU_DIR/$bin .
+# always lastest bin
+cp $EMU_DIR/$bin .
+[ -f preload.sh ] && echo "preload exists" && source ./preload.sh
+echo $nojs = nojs
+if [ "$nojs" = "1" ]; then 
+  gptk="-c ./conf.gptk" 
 fi
-
-if [ -f "conf.gptk" ]; then
- gptk="-c ./conf.gptk" 
-fi
-
+# double S always available
+echo GPTK: $EMU_DIR/gptokeyb -k "$bin" $gptk 
 $EMU_DIR/gptokeyb -k "$bin" $gptk &
 
-./$bin --gameFolder="$pa" --vsync=true --fixedFramerate=60
+./$bin --gameFolder="$pa"  --fullscreen=true
+#--vsync=true --fixedFramerate=60
 kill -9 $(pidof gptokeyb)
-          result=$?
-          echo result=$result
+result=$?
+echo result=$result
+echo ====== EOF $bin "$*" =======
 fi

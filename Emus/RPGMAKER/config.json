@@ -1,24 +1,27 @@
 {
-"label":"RPGMAKER",
-"icon":"ic-RPGMAKER.png",
-"iconsel":"",
-"background":"bg.png",
-"themecolor":"EC7063",
-"launch":"launch.sh",
-"rompath":"../../Roms/RPGMAKER",
-"imgpath":"../../Imgs/RPGMAKER",
-"useswap":1,
-"shortname":1,
-"hidebios":1,
-"extlist":"m3u",
-    "launchlist": [
-        {
-            "name": "RPGMAKER Performance Mode",
-            "launch": "launch_performance.sh"
-        },
-        {
-            "name": "RPGMAKER",
-            "launch": "launch.sh"
-        }
-    ]
+  "label": "RPGMAKER",
+  "icon": "RPGMAKER.png",
+  "background": "bg.png",
+  "themecolor": "EC7063",
+  "launch": "launch_mkxp.sh",
+  "rompath": "../../Roms/RPGMAKER",
+  "imgpath": "../../Imgs/RPGMAKER",
+  "useswap": 1,
+  "shortname": 1,
+  "hidebios": 1,
+  "extlist": "m3u",
+  "launchlist": [
+    {
+      "name": "MKXP-Z",
+      "launch": "launch_z.sh"
+    },
+    {
+      "name": "MKXP(Default)",
+      "launch": "launch_mkxp.sh"
+    },
+    {
+      "name": "MKXP Freebird",
+      "launch": "launch.sh"
+    }
+  ]
 }

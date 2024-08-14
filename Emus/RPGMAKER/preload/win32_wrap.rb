@@ -376,7 +376,7 @@ class Win32API
 			return @impl.call(args)
 		end
 
-		MKXP.puts("[#{@dll}:#{@func}] #{args.inspect}") if !@called and !@ECHO_BLACKLIST.include?(@func)
+		#MKXP.puts("[#{@dll}:#{@func}] #{args.inspect}") if !@called and !@ECHO_BLACKLIST.include?(@func)
 		@called = true
 		return 1
 	end
